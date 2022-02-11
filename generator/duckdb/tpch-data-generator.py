@@ -107,7 +107,7 @@ create table region (
 
 copy part from '""" + source_path + """/part.tbl' delimiter '|';
 COPY (SELECT * FROM part) TO '""" + destination_path + """/part.parquet' (FORMAT 'parquet');
-/*
+
 copy supplier from '""" + source_path + """/supplier.tbl' delimiter '|';
 COPY (SELECT * FROM supplier) TO '""" + destination_path + """/supplier.parquet' (FORMAT 'parquet');
 
@@ -128,7 +128,7 @@ COPY (SELECT * FROM nation) TO '""" + destination_path + """/nation.parquet' (FO
 
 copy region from '""" + source_path + """/region.tbl' delimiter '|';
 COPY (SELECT * FROM region) TO '""" + destination_path + """/region.parquet' (FORMAT 'parquet');
-*/
+
 """)
 
 con.execute(query=initialisationQuery)
