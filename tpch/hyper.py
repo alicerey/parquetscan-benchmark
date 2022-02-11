@@ -28,7 +28,7 @@ with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU, paramet
             runtimes = []
             for j in range(0,10):
                 start = timeit.default_timer()
-                connection.execute_list_query("explain analyze " + data)
+                connection.execute_list_query(data)
                 stop = timeit.default_timer()
                 runtimes.append(stop-start)
             print('Query',i, ' Min: ', min(runtimes))
