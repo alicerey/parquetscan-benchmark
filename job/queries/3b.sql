@@ -1,0 +1,1 @@
+SELECT MIN(t.title) AS movie_title FROM 'keyword.parquet' k, 'movie_info.parquet' mi, 'movie_keyword.parquet' mk, 'title.parquet' t WHERE k.keyword  like '%sequel%' AND mi.info  IN ('Bulgaria') AND t.production_year > 2010 AND t.id = mi.movie_id AND t.id = mk.movie_id AND mk.movie_id = mi.movie_id AND k.id = mk.keyword_id;
