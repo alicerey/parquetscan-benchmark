@@ -52,7 +52,7 @@ with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU) as hype
     print("The HyperProcess has started.")
 
     # Connect to an existing .hyper file (CreateMode.NONE)
-    with Connection(hyper.endpoint, '/home/rey/database/job_hyper/db.hyper', CreateMode.CREATE_AND_REPLACE) as connection:
+    with Connection(hyper.endpoint, 'db.hyper', CreateMode.CREATE_AND_REPLACE) as connection:
         print("The connection to the Hyper file is open.")
         # ... use the connection object to send SQL queries to read data
         for k in ("compressed", "uncompressed"):
