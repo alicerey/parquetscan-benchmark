@@ -1,13 +1,9 @@
 #!/usr/bin/python3
 import duckdb
 import timeit
-import sys
+import os
 
-if len(sys.argv) != 2:
-    print("Please pass the path to the SQL queries")
-    sys.exit()
-
-query_path = sys.argv[1]
+file_path = os.path.abspath(os.path.dirname(__file__))
 
 con = duckdb.connect(database=':memory:', read_only=False)
 
@@ -49,7 +45,7 @@ job_queries=[
 
 
 for i in job_queries:
-    text_file = open(query_path + "/" + str(i) + ".sql", "r")
+    text_file = open(file_path + "/queries/" + str(i) + ".sql", "r")
     data = text_file.read()
     runtimes = []
     for j in range(0,10):

@@ -2,13 +2,9 @@
 from tableauhyperapi import HyperProcess, Telemetry, Connection, CreateMode, NOT_NULLABLE, NULLABLE, SqlType, \
 TableDefinition, Inserter, escape_name, escape_string_literal, HyperException, TableName
 import timeit
-import sys
+import os
 
-if len(sys.argv) != 2:
-    print("Please pass the path to the SQL queries")
-    sys.exit()
-
-query_path = sys.argv[1]
+file_path = os.path.abspath(os.path.dirname(__file__))
 
 job_queries=[
     '1a','1b','1c','1d',
@@ -48,16 +44,10 @@ job_queries=[
 
 # Start Hyper
 with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU) as hyper:
-    
-    print("The HyperProcess has started.")
-
-    # Connect to an existing .hyper file (CreateMode.NONE)
     with Connection(hyper.endpoint, 'db.hyper', CreateMode.CREATE_AND_REPLACE) as connection:
-        print("The connection to the Hyper file is open.")
-        # ... use the connection object to send SQL queries to read data
         for k in ("compressed", "uncompressed"):
             for i in job_queries:
-                text_file = open(query_path + "/" + str(i) + ".sql", "r")
+                text_file = open(file_path + "/queries/" + str(i) + ".sql", "r")
                 data = text_file.read()
                 runtimes = []
                 for j in range(0,10):
