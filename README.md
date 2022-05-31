@@ -25,7 +25,7 @@ The repository is structured as follows:
 The benchmark scripts assume that the parquet files are located in the current directory.
 ### For DuckDB and HyPer:
 ```
-./duckdb.py <query-path>
+./duckdb_tpch.py
 ```
 
 ### For Spark:
