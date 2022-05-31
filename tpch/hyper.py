@@ -11,12 +11,8 @@ if len(sys.argv) != 2:
 
 query_path = sys.argv[1]
 
-# Process Parameters
-process_parameters = {
-    "experimental_external_format_parquet": "on"
-}
 # Start Hyper
-with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU, parameters=process_parameters) as hyper:
+with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU) as hyper:
     print("The HyperProcess has started.")
 
     with Connection(hyper.endpoint, 'db.hyper', CreateMode.CREATE_AND_REPLACE) as connection:
