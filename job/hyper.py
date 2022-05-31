@@ -10,11 +10,6 @@ if len(sys.argv) != 2:
 
 query_path = sys.argv[1]
 
-# Process Parameters
-process_parameters = {
-    "experimental_external_format_parquet": "on"
-}
-
 job_queries=[
     '1a','1b','1c','1d',
     '2a','2b','2c','2d',
@@ -52,7 +47,7 @@ job_queries=[
 ]
 
 # Start Hyper
-with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU, parameters=process_parameters) as hyper:
+with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU) as hyper:
     
     print("The HyperProcess has started.")
 
