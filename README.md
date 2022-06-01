@@ -10,7 +10,7 @@ The repository is structured as follows:
 - Python packages: `duckdb`, `tableauhyperapi` (use `requirements.txt` to get used versions)
 
 ## How to generate Parquet files:
-### For DuckDB and HyPer:
+### For DuckDB and Arrow:
 ```
 ./tpch-data-generator.py <source-path> <destination-path>
 ```
@@ -23,7 +23,7 @@ The repository is structured as follows:
 
 ## How to run the Benchmarks:
 The benchmark scripts assume that the parquet files are located in the current directory.
-### For DuckDB and HyPer:
+### For DuckDB and Hyper:
 ```
 ./duckdb_tpch.py
 ```
