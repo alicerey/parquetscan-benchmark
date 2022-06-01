@@ -2,7 +2,7 @@
 
 The repository is structured as follows:
 - In the `generator` folder we store the scripts to generate parquet files from the different parquet writers. 
-- In the `job` and `tpch` folders we store the scripts to run the benchmarks on each database with the respective scripts.
+- In the `job` and `tpch` folders we store the scripts to run the benchmarks on each database.
 
 #### Requirements:
 
