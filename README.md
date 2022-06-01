@@ -32,3 +32,7 @@ The benchmark scripts assume that the parquet files are located in the current d
 ```
 ./spark-shell --driver-memory 12g -i tpch.scala
 ```
+
+### For Umbra:
+```
+./umbra_tpch.py
