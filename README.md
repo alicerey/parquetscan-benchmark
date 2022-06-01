@@ -35,4 +35,4 @@ The benchmark scripts assume that the parquet files are located in the current d
 
 ### For Umbra:
 ```
-./umbra_tpch.py
+./umbra_tpch.sh
