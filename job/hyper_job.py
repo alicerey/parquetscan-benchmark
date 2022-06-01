@@ -6,6 +6,10 @@ import os
 
 file_path = os.path.abspath(os.path.dirname(__file__))
 
+process_parameters = {
+    "log_dir": file_path,
+}
+
 job_queries=[
     '1a','1b','1c','1d',
     '2a','2b','2c','2d',
@@ -43,19 +47,16 @@ job_queries=[
 ]
 
 # Start Hyper
-with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU) as hyper:
-    with Connection(hyper.endpoint, 'db.hyper', CreateMode.CREATE_AND_REPLACE) as connection:
-        for k in ("compressed", "uncompressed"):
-            for i in job_queries:
-                text_file = open(file_path + "/queries/" + str(i) + ".sql", "r")
-                data = text_file.read()
-                runtimes = []
-                for j in range(0,10):
-                    start = timeit.default_timer()
-                    connection.execute_list_query(data)
-                    stop = timeit.default_timer()
-                    runtimes.append(stop-start)
-                print('Query',i, ' Min: ', min(runtimes))
-                text_file.close()
-    print("The connection to the Hyper extract file is closed.")
-print("The HyperProcess has shut down.")
+with HyperProcess(telemetry=Telemetry.DO_NOT_SEND_USAGE_DATA_TO_TABLEAU,parameters=process_parameters) as hyper:
+    with Connection(hyper.endpoint, file_path + '/db.hyper', CreateMode.CREATE_AND_REPLACE) as connection:
+        for i in job_queries:
+            text_file = open(file_path + "/queries/" + str(i) + ".sql", "r")
+            data = text_file.read()
+            runtimes = []
+            for j in range(0,10):
+                start = timeit.default_timer()
+                connection.execute_list_query(data)
+                stop = timeit.default_timer()
+                runtimes.append(stop-start)
+            print('Query',i, ' Min: ', min(runtimes))
+            text_file.close()

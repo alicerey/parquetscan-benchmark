@@ -16,5 +16,5 @@ for i in range(1,23):
       con.execute(query=data)
       stop = timeit.default_timer()
       runtimes.append(stop-start)
-   print('Query',i, ' Min: ', min(runtimes))
+   print('Query',i, 'Min:', min(runtimes))
    text_file.close()
