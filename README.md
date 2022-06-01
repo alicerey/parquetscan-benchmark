@@ -7,7 +7,7 @@ The repository is structured as follows:
 #### Requirements:
 
 - Spark-Shell
-- Python packages: `duckdb`, `tableauhyperapi`
+- Python packages: `duckdb`, `tableauhyperapi` (requirements.txt)
 
 ## How to generate Parquet files:
 ### For DuckDB and HyPer:
