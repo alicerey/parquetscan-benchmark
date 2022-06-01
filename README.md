@@ -2,7 +2,7 @@
 
 The repository is structured as follows:
 - In the `generator` folder we store the scripts to generate parquet files from the different parquet writers. 
-- In the `job` and `tpch` folders we store the scripts to run the benchmarks on each database with the respective scripts. For the DuckDB and HyPer benchmarks we use the same SQL-files. Since Spark needs an intermediate step of loading the parquet files into data frames, we hard-coded the queries into these scripts.
+- In the `job` and `tpch` folders we store the scripts to run the benchmarks on each database with the respective scripts.
 
 #### Requirements:
 
