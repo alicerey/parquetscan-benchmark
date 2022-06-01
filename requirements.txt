@@ -1,0 +1,2 @@
+duckdb == 0.3.4
+tableauhyperapi == 0.0.14751
