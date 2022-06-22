@@ -179,7 +179,7 @@ region_schema = [
 def generateParquetFile(filename, column_names, column_types, schema):
     path = source_path + "/" + filename + ".tbl"
     table = csv.read_csv(path, parse_options=csv.ParseOptions(delimiter="|"), read_options=csv.ReadOptions(column_names=column_names),
-        convert_options=csv.ConvertOptions(column_types=lineitem_column_types)
+        convert_options=csv.ConvertOptions(column_types=column_types)
     )
     table = table.cast(pa.schema(schema))
     pq.write_table(table, destination_path + "/" + filename + ".parquet")
